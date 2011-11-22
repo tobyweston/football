@@ -2,6 +2,7 @@ package bad.robot.football;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 public class ResultListener {
 
@@ -12,6 +13,7 @@ public class ResultListener {
     }
 
     public void onResultReceipt(Reader reader) throws IOException {
-        unmarshaller.unmarshall(reader);
+        List<Result> results = unmarshaller.unmarshall(reader);
+
     }
 }

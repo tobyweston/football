@@ -4,11 +4,11 @@ import au.com.bytecode.opencsv.CSVReader;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static bad.robot.football.DateAsString.asDate;
 
 public class CsvUnmarshaller implements Unmarshaller {
 
@@ -23,17 +23,12 @@ public class CsvUnmarshaller implements Unmarshaller {
     }
 
     private Result resultFromArray(String[] line) throws IOException {
-        try {
-            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(line[0]);
-            String homeTeam = line[1].trim();
-            int homeScore = Integer.parseInt(line[2].trim());
-            String awayTeam = line[3].trim();
-            int awayScore = Integer.parseInt(line[4].trim());
-            return new Result(date, homeTeam, homeScore, awayTeam, awayScore);
-        } catch (ParseException e) {
-            throw new IOException(e);
-        }
-
+        Date date = asDate(line[0]);
+        String homeTeam = line[1].trim();
+        int homeScore = Integer.parseInt(line[2].trim());
+        String awayTeam = line[3].trim();
+        int awayScore = Integer.parseInt(line[4].trim());
+        return new Result(date, homeTeam, homeScore, awayTeam, awayScore);
     }
 
 }
