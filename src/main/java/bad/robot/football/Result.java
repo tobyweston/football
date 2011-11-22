@@ -22,6 +22,23 @@ public class Result {
         this.awayScore = awayScore;
     }
 
+    public void updateHomeTeam(Placing placing) {
+        if (placing.affectedBy(homeTeam))
+            updateAsWinOrDraw(placing, homeScore, awayScore);
+    }
+
+    public void updateAwayTeam(Placing placing) {
+        if (placing.affectedBy(awayTeam))
+            updateAsWinOrDraw(placing, awayScore, homeScore);
+    }
+
+    private void updateAsWinOrDraw(Placing placing, int first, int second) {
+        if (first == second)
+            placing.addDraw();
+        else if (first > second)
+            placing.addWin();
+    }
+
     @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
@@ -37,20 +54,4 @@ public class Result {
         return new SimpleDateFormat("dd/MM/yyyy").format(date) + " " + homeTeam + " " + homeScore + "-" + awayScore + " " + awayTeam;
     }
 
-    public void updateHomeTeam(Placing placing) {
-        if (placing.affectedBy(homeTeam))
-            update(placing, homeScore, awayScore);
-    }
-
-    public void updateAwayTeam(Placing placing) {
-        if (placing.affectedBy(awayTeam))
-            update(placing, awayScore, homeScore);
-    }
-
-    private void update(Placing placing, int first, int second) {
-        if (first > second)
-            placing.addWin();
-        else if (first == second)
-            placing.addDraw();
-    }
 }
