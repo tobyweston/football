@@ -2,7 +2,6 @@ package bad.robot.football;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.Collections;
 import java.util.List;
 
 public class ResultListener {
@@ -20,7 +19,7 @@ public class ResultListener {
     public void onResultReceipt(Reader reader) throws IOException {
         List<Result> results = unmarshaller.unmarshall(reader);
         leagueTable.add(toArray(results));
-        listener.leagueUpdated(Collections.<Placing>emptyList());
+        listener.leagueUpdated(leagueTable);
     }
 
     private static Result[] toArray(List<Result> results) {

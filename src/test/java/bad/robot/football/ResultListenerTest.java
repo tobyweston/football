@@ -61,7 +61,7 @@ public class ResultListenerTest {
         context.checking(new Expectations() {{
             one(unmarshaller).unmarshall(with(any(Reader.class))); will(returnValue(results));
             ignoring(leagueTable);
-            one(sms).leagueUpdated(with(any(List.class)));
+            one(sms).leagueUpdated(with(any(LeagueTable.class)));
         }});
         listener.onResultReceipt(anyReader());
     }
