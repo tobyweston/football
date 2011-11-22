@@ -15,16 +15,16 @@ import static org.junit.Assert.assertThat;
 
 public class UnmarshallerTest {
 
-    private final Unmarshaller unmarshaller = new Unmarshaller();
+    private final Unmarshaller unmarshaller = new CsvUnmarshaller();
 
     @Test(expected = FileNotFoundException.class)
     public void shouldThrowExceptionForMissingFile() throws IOException, ParseException {
-        unmarshaller.unmarshall("rubarb.foo");
+        unmarshaller.unmarshall(File.getFileAsReader("rubarb.foo"));
     }
 
     @Test
     public void shouldUnmarshall() throws IOException, ParseException {
-        List<Result> results = unmarshaller.unmarshall("scores.csv");
+        List<Result> results = unmarshaller.unmarshall(File.getFileAsReader("scores.csv"));
         List<Result> expected = new ArrayList<Result>() {{
             add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2011"), "Bristol City", 4, "Arsenal", 2));
             add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2011"), "Brompton", 2, "West Smithfields", 4));
