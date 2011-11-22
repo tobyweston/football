@@ -1,0 +1,30 @@
+[
+    {
+        "game":{
+            "date":"20/11/2011",
+            "awayTeam":"Man City",
+            "awayScore":1,
+            "homeTeam":"Man United",
+            "homeScore":1
+        }
+    },
+    {
+        "game":{
+            "date":"22/11/2011",
+            "awayTeam":"Man City",
+            "awayScore":2,
+            "homeTeam":"Man United",
+            "homeScore":1
+        }
+    },
+    {
+        "game":{
+            "date":"23/11/2011",
+            "awayTeam":"Everton",
+            "awayScore":1,
+            "homeTeam":"West Ham United",
+            "homeScore":3
+        }
+    }
+
+]
