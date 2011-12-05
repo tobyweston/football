@@ -14,22 +14,22 @@ import java.util.List;
 
 public class Unmarshaller {
 
-    public List<Result> unmarshall(String filename) throws IOException, ParseException {
-        List<Result> results = new ArrayList<Result>();
+    public List<Game> unmarshall(String filename) throws IOException, ParseException {
+        List<Game> games = new ArrayList<Game>();
         CSVReader reader = new CSVReader(getFileAsReader(filename));
         String[] line = reader.readNext();
         while ((line = reader.readNext()) != null)
-            results.add(resultFromArray(line));
-        return results;
+            games.add(resultFromArray(line));
+        return games;
     }
 
-    private Result resultFromArray(String[] line) throws ParseException {
+    private Game resultFromArray(String[] line) throws ParseException {
         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(line[0]);
         String homeTeam = line[1].trim();
         int homeScore = Integer.parseInt(line[2].trim());
         String awayTeam = line[3].trim();
         int awayScore = Integer.parseInt(line[4].trim());
-        return new Result(date, homeTeam, homeScore, awayTeam, awayScore);
+        return new Game(date, homeTeam, homeScore, awayTeam, awayScore);
     }
 
     private static InputStreamReader getFileAsReader(String filename) throws FileNotFoundException {

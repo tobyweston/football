@@ -24,22 +24,22 @@ public class UnmarshallerTest {
 
     @Test
     public void shouldUnmarshall() throws IOException, ParseException {
-        List<Result> results = unmarshaller.unmarshall("scores.csv");
-        List<Result> expected = new ArrayList<Result>() {{
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2011"), "Bristol City", 4, "Arsenal", 2));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2011"), "Brompton", 2, "West Smithfields", 4));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("11/10/2011"), "Tottenham", 2, "Aston Villa", 0));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("11/10/2011"), "Chelsea", 1, "Liverpool", 2));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("12/11/2011"), "Everton", 2, "Wolverhampton", 1));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("12/11/2011"), "Man City", 3, "Newcastle", 2));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("12/11/2011"), "Norwich", 1, "Arsenal", 2));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("14/11/2011"), "Stoke", 2, "QPR", 3));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("14/11/2011"), "Sunderland", 0, "Fulham", 1));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("15/11/2011"), "Swansea", 0, "Man Utd", 1));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("16/11/2011"), "West Brom", 2, "Bolton", 1));
-            add(new Result(new SimpleDateFormat("dd/MM/yyyy").parse("19/11/2011"), "Wigan", 3, "Blackburn", 3));
+        List<Game> games = unmarshaller.unmarshall("scores.csv");
+        List<Game> expected = new ArrayList<Game>() {{
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2011"), "Bristol City", 4, "Arsenal", 2));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2011"), "Brompton", 2, "West Smithfields", 4));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("11/10/2011"), "Tottenham", 2, "Aston Villa", 0));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("11/10/2011"), "Chelsea", 1, "Liverpool", 2));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("12/11/2011"), "Everton", 2, "Wolverhampton", 1));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("12/11/2011"), "Man City", 3, "Newcastle", 2));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("12/11/2011"), "Norwich", 1, "Arsenal", 2));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("14/11/2011"), "Stoke", 2, "QPR", 3));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("14/11/2011"), "Sunderland", 0, "Fulham", 1));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("15/11/2011"), "Swansea", 0, "Man Utd", 1));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("16/11/2011"), "West Brom", 2, "Bolton", 1));
+            add(new Game(new SimpleDateFormat("dd/MM/yyyy").parse("19/11/2011"), "Wigan", 3, "Blackburn", 3));
         }};
-        assertThat(results, is(equalTo(expected)));
+        assertThat(games, is(equalTo(expected)));
     }
 
 }

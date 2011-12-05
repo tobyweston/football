@@ -13,13 +13,10 @@ public class LeagueTable implements Iterable<Placing> {
             placings.add(new Placing(team, 0));
     }
 
-    public void add(Result... results) {
-        for (Result result : results) {
-            for (Placing placing : placings) {
-                result.updateHomeTeam(placing);
-                result.updateAwayTeam(placing);
-            }
-        }
+    public void add(Game... games) {
+        for (Game game : games)
+            for (Placing placing : placings)
+                game.update(placing);
     }
 
     @Override
