@@ -9,16 +9,21 @@ import java.util.Date;
 public class Game {
 
     private final Date date;
-    private Result result;
+    private final Result result;
 
     public Game(Date date, String homeTeam, int homeScore, String awayTeam, int awayScore) {
         this.date = date;
+        this.result = calculateResult(homeTeam, homeScore, awayTeam, awayScore);
+    }
+
+    private Result calculateResult(String homeTeam, int homeScore, String awayTeam, int awayScore) {
         if (homeScore > awayScore)
-            result = new Win(homeTeam);
-        else if (awayScore > homeScore)
-            result = new Win(awayTeam);
-        else if (homeScore == awayScore)
-            result = new Draw(homeTeam, awayTeam);
+            return new Win(homeTeam);
+        if (awayScore > homeScore)
+            return new Win(awayTeam);
+        if (homeScore == awayScore)
+            return new Draw(homeTeam, awayTeam);
+        return null;
     }
 
     public void update(Placing placing) {
