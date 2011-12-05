@@ -17,6 +17,6 @@ public class Win implements Result {
 
     @Override
     public int addTo(int points) {
-        return points += 3;
+        return points + 3;
     }
 }

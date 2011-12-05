@@ -18,6 +18,6 @@ public class Draw implements Result {
 
     @Override
     public int addTo(int points) {
-        return points += 1;
+        return points + 1;
     }
 }
