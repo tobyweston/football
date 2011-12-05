@@ -13,12 +13,8 @@ public class Placing {
         this.points = points;
     }
 
-    public void addWin() {
-        this.points += 3;
-    }
-
-    public void addDraw() {
-        this.points += 1;
+    public void add(Result result) {
+        this.points = result.addTo(points);
     }
 
     public boolean affectedBy(String team) {
