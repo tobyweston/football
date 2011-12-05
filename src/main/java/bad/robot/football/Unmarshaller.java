@@ -19,11 +19,11 @@ public class Unmarshaller {
         CSVReader reader = new CSVReader(getFileAsReader(filename));
         String[] line = reader.readNext();
         while ((line = reader.readNext()) != null)
-            games.add(resultFromArray(line));
+            games.add(gameFromArray(line));
         return games;
     }
 
-    private Game resultFromArray(String[] line) throws ParseException {
+    private static Game gameFromArray(String[] line) throws ParseException {
         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(line[0]);
         String homeTeam = line[1].trim();
         int homeScore = Integer.parseInt(line[2].trim());
