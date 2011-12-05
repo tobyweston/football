@@ -1,11 +1,11 @@
 package bad.robot.football;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Date;
 
 import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.collection.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertThat;
 
 public class LeagueTableTest {
@@ -33,8 +33,15 @@ public class LeagueTableTest {
     }
 
     @Test
-    @Ignore
     public void createsMixedWinDrawAndLosesLeagueTable() {
+        LeagueTable leagueTable = new LeagueTable("Man City", "Man United", "West Ham");
+        leagueTable.add(new Result(new Date(), "Man City", 2, "Man United", 1));
+        leagueTable.add(new Result(new Date(), "Man City", 1, "Man United", 1));
+        leagueTable.add(new Result(new Date(), "Man City", 2, "West Ham", 3));
+        assertThat(leagueTable, hasItems(
+                new Placing("Man City", 4),
+                new Placing("Man United", 1),
+                new Placing("West Ham", 3)));
     }
 
 }
