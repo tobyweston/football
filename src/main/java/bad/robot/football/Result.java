@@ -34,6 +34,23 @@ public class Result {
 
     @Override
     public String toString() {
-        return new SimpleDateFormat("dd/MM/yyyy").format(date) + " " + homeTeam + " " + +homeScore + "-" + awayScore + " " + awayTeam ;
+        return new SimpleDateFormat("dd/MM/yyyy").format(date) + " " + homeTeam + " " + homeScore + "-" + awayScore + " " + awayTeam;
+    }
+
+    public String getHomeTeam() {
+        return homeTeam;
+    }
+
+    public String getAwayTeam() {
+        return awayTeam;
+    }
+
+    void update(Placing placing) {
+        if (placing == null)
+            return;
+        if (homeScore > awayScore)
+            placing.addWin();
+        else if (homeScore == awayScore)
+            placing.addDraw();
     }
 }
