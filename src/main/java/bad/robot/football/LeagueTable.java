@@ -1,12 +1,12 @@
 package bad.robot.football;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
 public class LeagueTable implements Iterable<Placing> {
 
-    private final List<Placing> placings = new ArrayList<Placing>();
+    private final Set<Placing> placings = new HashSet<Placing>();
 
     public LeagueTable(String... teams) {
         for (String team : teams)
