@@ -13,11 +13,7 @@ public class Draw implements Result {
     @Override
     public void update(Placing placing) {
         if (placing.affectedBy(aTeam) || placing.affectedBy(anotherTeam))
-            placing.add(this);
+            placing.addPoints(1);
     }
 
-    @Override
-    public int addTo(int points) {
-        return points + 1;
-    }
 }

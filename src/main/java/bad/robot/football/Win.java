@@ -12,11 +12,7 @@ public class Win implements Result {
     @Override
     public void update(Placing placing) {
         if (placing.affectedBy(team))
-            placing.add(this);
+            placing.addPoints(3);
     }
 
-    @Override
-    public int addTo(int points) {
-        return points + 3;
-    }
 }
