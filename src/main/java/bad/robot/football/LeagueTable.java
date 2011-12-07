@@ -1,6 +1,5 @@
 package bad.robot.football;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -14,16 +13,9 @@ public class LeagueTable implements Iterable<Placing> {
             placings.add(new Placing(team, 0));
     }
 
-    public void add(Result result) {
-        result.update(findPlacingFor(result.getHomeTeam()));
-        result.update(findPlacingFor(result.getAwayTeam()));
-    }
-
-    private Placing findPlacingFor(String team) {
+    public void add(Game game) {
         for (Placing placing : placings)
-            if (placing.getTeam().equals(team))
-                return placing;
-        return null;
+            game.update(placing);
     }
 
     @Override
@@ -33,6 +25,6 @@ public class LeagueTable implements Iterable<Placing> {
 
     @Override
     public String toString() {
-        return Arrays.toString(placings.toArray());
+        return placings.toString();
     }
 }

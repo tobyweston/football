@@ -13,16 +13,12 @@ public class Placing {
         this.points = points;
     }
 
-    public String getTeam() {
-        return team;
+    public void addPoints(int points) {
+        this.points += points;
     }
 
-    public void addWin() {
-        points += 3;
-    }
-
-    public void addDraw() {
-        points += 1;
+    public boolean affectedBy(String team) {
+        return this.team.equals(team);
     }
 
     @Override
@@ -37,6 +33,6 @@ public class Placing {
 
     @Override
     public String toString() {
-        return "Placing{team='" + team + '\'' + ", points=" + points + '}';
+        return team + ", " + String.valueOf(points);
     }
 }
